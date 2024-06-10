@@ -1,18 +1,16 @@
 import './App.css'
-import Header from "./components/Header"
-import Meme from "./components/Meme"
-import Footer from "./components/Footer"
-import React, {useState} from "react"
+import Header from "./components/Header/Header.jsx"
+import Meme from "./components/Meme/Meme.jsx"
+import Footer from "./components/Footer/Footer.jsx"
+import React from "react"
 
+//Create a state that holds isDarkMode, pass the bool to each component to render
 
 
 function App(){
-    
-    const [state,setState] = useState(0)
-
 
     return (
-        <div>
+        <div id = "main-container">
             <Header />
             <Meme />
             <Footer />
