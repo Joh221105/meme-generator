@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import "./Meme.module.css";
+import "./Meme.css";
 
 
 function Meme(){
@@ -30,11 +30,27 @@ function Meme(){
     }
 
     return(
-        <div className="memeContainer">
-            <button onClick = {getNewImage}> GET A NEW MEME </button>
-            <input type = "text" placeholder="Top Text"></input>
-            <img src = {meme.memeURL} alt ="placeholder"></img>
-            <input type = "text" placeholder="Bottom text"></input>
+        <div id="meme-container">
+            <div id ="form">
+                <label>
+                    Top Text: 
+                    <input id="top-text" type = "text"></input>
+                </label>
+                <label>
+                    Bottom Text:
+                    <input type = "text"></input>
+                </label>
+                
+                
+            </div>
+            <img id = "meme-image" src = {meme.memeURL} alt ="meme"></img>
+            <div id ="top-two-buttons">
+                <button className = "button" onClick = {getNewImage}> GET A NEW MEME </button>
+                <button className= "button"> UPLOAD IMAGE</button>
+            </div>
+    
+            <button className = "button" id = "download-meme-button"> DOWNLOAD MEME</button>
+            
         </div> 
     )
 }

@@ -1,0 +1,51 @@
+#meme-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#meme-image{
+    width:600px;
+    height:400px;
+}
+
+#top-two-buttons{
+    display: flex;
+    justify-content: space-between;
+    margin-top:10px;
+}
+
+#form{
+    display:flex;
+    flex-direction: column;
+    margin:20px 0;
+    width:100%;
+    margin-left: 290px;
+}
+
+#download-meme-button{
+    width:50%;
+}
+
+#top-text{
+    margin-left:38px;
+}
+.button{
+    margin: 10px 40px;
+    padding:10px 20px;
+    border-radius: 10px;
+    width:250px;
+}
+
+
+label{
+    width:100%;
+    padding:10px;
+}
+
+input{
+    margin-left:10px;
+    width:475px;
+    padding:5px;
+    border-radius: 5px;
+}

@@ -4,12 +4,13 @@ import Meme from "./components/Meme/Meme.jsx"
 import Footer from "./components/Footer/Footer.jsx"
 import React from "react"
 
+//Create a state that holds isDarkMode, pass the bool to each component to render
 
 
 function App(){
 
     return (
-        <div>
+        <div id = "main-container">
             <Header />
             <Meme />
             <Footer />
