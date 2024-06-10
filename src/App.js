@@ -1,15 +1,12 @@
 import './App.css'
-import Header from "./components/Header"
-import Meme from "./components/Meme"
-import Footer from "./components/Footer"
-import React, {useState} from "react"
+import Header from "./components/Header/Header.jsx"
+import Meme from "./components/Meme/Meme.jsx"
+import Footer from "./components/Footer/Footer.jsx"
+import React from "react"
 
 
 
 function App(){
-    
-    const [state,setState] = useState(0)
-
 
     return (
         <div>
