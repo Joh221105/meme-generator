@@ -30,6 +30,21 @@
 #top-text{
     margin-left:38px;
 }
+
+#top-text-container, #bottom-text-container{
+    position:absolute;
+    color: white;
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 3px black;
+}
+
+#top-text-container{
+    top:250px;
+}
+
+#bottom-text-container{
+    top:550px;
+}
 .button{
     margin: 10px 40px;
     padding:10px 20px;
