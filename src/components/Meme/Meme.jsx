@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import "./Meme.css";
 
 
@@ -11,6 +11,7 @@ function Meme(props){
     })
     
     const[allMemes, setAllMemes] = useState({})
+    const canvasRef = useRef(null);
 
     useEffect(() => {
         fetch('https://api.imgflip.com/get_memes')
@@ -28,6 +29,7 @@ function Meme(props){
             
     })})
     }
+
     function topInputChange(event){
         setMeme(prevMeme => ({
             ...prevMeme,
@@ -51,8 +53,40 @@ function Meme(props){
         "backgroundColor": props.darkMode ? "#F3D7CA" : "#FFC0CB",
         "color": props.darkMode ? "black" : "white" 
     }
+
+    function downloadMeme() {
+        const canvas = canvasRef.current;
     
+        const context = canvas.getContext("2d");
+        const image = new Image();
+        image.crossOrigin = "anonymous";
+        image.src = meme.memeURL;
     
+        image.onload = () => {
+          canvas.width = image.width;
+          canvas.height = image.height;
+    
+          context.drawImage(image, 0, 0);
+    
+          context.font = "35px Impact";
+          context.fillStyle = "white";
+          context.textAlign = "center";
+          context.strokeStyle = "black";
+          context.lineWidth = 1.5;
+    
+          context.fillText(meme.topText, canvas.width / 2, 40);
+          context.strokeText(meme.topText, canvas.width / 2, 40);
+    
+          context.fillText(meme.bottomText, canvas.width / 2, canvas.height - 20);
+          context.strokeText(meme.bottomText, canvas.width / 2, canvas.height - 20);
+    
+          const resultURL = canvas.toDataURL("image/png");
+          const link = document.createElement("a");
+          link.href = resultURL;
+          link.download = "meme.png";
+          link.click();
+        };
+      }
 
 
     return(
@@ -77,8 +111,8 @@ function Meme(props){
                 <button style = {topButtonParams}className= "button"> UPLOAD IMAGE</button>
             </div>
     
-            <button style = {downloadButtonParams}className = "button" id = "download-meme-button"> DOWNLOAD MEME</button>
-            
+            <button onClick = {downloadMeme} style = {downloadButtonParams}className = "button" id = "download-meme-button"> DOWNLOAD MEME</button>
+            <canvas ref={canvasRef} style={{display: "none"}}></canvas>
         </div> 
     )
 }
