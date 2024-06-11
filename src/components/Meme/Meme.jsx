@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import "./Meme.css";
 
 
-function Meme(){
+function Meme(props){
 
     const [meme, setMeme] = useState({
         "topText": "",
@@ -42,9 +42,22 @@ function Meme(){
         }))
     }
 
+    let topButtonParams = {
+        "backgroundColor": props.darkMode ? "#E6A4B4" : "#CE4A7E",
+        "color": props.darkMode ? "black" : "white"
+    }
+
+    let downloadButtonParams = {
+        "backgroundColor": props.darkMode ? "#F3D7CA" : "#FFC0CB",
+        "color": props.darkMode ? "black" : "white" 
+    }
+    
+    
+
+
     return(
-        <div id="meme-container">
-            <div id ="form">
+        <div style = {{"backgroundColor": props.darkMode ? "#FFF8E3": "black"}} id="meme-container">
+            <div id ="form" style = {{"color": props.darkMode ? "black" : "white"}}>
                 <label>
                     Top Text: 
                     <input onChange={topInputChange} id="top-text" type = "text"></input>
@@ -60,11 +73,11 @@ function Meme(){
             <div id ="bottom-text-container">{meme.bottomText}</div>
             <img id = "meme-image" src = {meme.memeURL} alt ="meme"></img>
             <div id ="top-two-buttons">
-                <button className = "button" onClick = {getNewImage}> GET A NEW MEME </button>
-                <button className= "button"> UPLOAD IMAGE</button>
+                <button style = {topButtonParams} className = "button" onClick = {getNewImage}> GET A NEW MEME </button>
+                <button style = {topButtonParams}className= "button"> UPLOAD IMAGE</button>
             </div>
     
-            <button className = "button" id = "download-meme-button"> DOWNLOAD MEME</button>
+            <button style = {downloadButtonParams}className = "button" id = "download-meme-button"> DOWNLOAD MEME</button>
             
         </div> 
     )
