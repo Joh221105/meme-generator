@@ -2,18 +2,23 @@ import './App.css'
 import Header from "./components/Header/Header.jsx"
 import Meme from "./components/Meme/Meme.jsx"
 import Footer from "./components/Footer/Footer.jsx"
-import React from "react"
-
-//Create a state that holds isDarkMode, pass the bool to each component to render
+import React, {useState} from "react"
 
 
 function App(){
 
+    const[isDarkMode, setIsDarkMode] = useState(true)
+
+    function toggleDarkMode(){
+        console.log(isDarkMode)
+        setIsDarkMode(prevMode => !prevMode)
+}
     return (
         <div id = "main-container">
-            <Header />
-            <Meme />
-            <Footer />
+            <Header darkMode = {isDarkMode} />
+            <Meme darkMode = {isDarkMode} />
+            <Footer darkMode = {isDarkMode}/>
+            <button id = "toggle-theme" onClick ={toggleDarkMode}>{isDarkMode ? "Toggle Dark Mode" :"Toggle Light Mode"}</button>
         </div>
     )
 }
