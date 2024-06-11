@@ -88,6 +88,20 @@ function Meme(props){
         };
       }
 
+      function handleFileChange(event){
+        let file = event.target.files[0];
+        let reader = new FileReader();
+
+        reader.onload = function(event){
+            setMeme(prevMeme => ({
+                ...prevMeme,
+                "memeURL": event.target.result
+            }))
+            
+        
+        };
+        reader.readAsDataURL(file);
+      }
 
     return(
         <div style = {{"backgroundColor": props.darkMode ? "#FFF8E3": "black"}} id="meme-container">
@@ -108,7 +122,10 @@ function Meme(props){
             <img id = "meme-image" src = {meme.memeURL} alt ="meme"></img>
             <div id ="top-two-buttons">
                 <button style = {topButtonParams} className = "button" onClick = {getNewImage}> GET A NEW MEME </button>
-                <button style = {topButtonParams}className= "button"> UPLOAD IMAGE</button>
+                <label style = {topButtonParams} htmlFor="file-upload" className="custom-file-upload">
+                    Upload Image
+                </label>
+                <input onChange = {handleFileChange} id="file-upload" type="file" />
             </div>
     
             <button onClick = {downloadMeme} style = {downloadButtonParams}className = "button" id = "download-meme-button"> DOWNLOAD MEME</button>
